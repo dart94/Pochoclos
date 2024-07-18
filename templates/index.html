@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pochoclos</title>
+    <meta name="description" content="Busca y descubre las mejores películas y series en Pochoclos.">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/styles.css">
+</head>
+<body class="fondo">
+    <section class="layout">
+        <div class="sidebar">
+            <h1>Bienvenido a Pochoclos</h1>
+            <input type="text" id="searchQuery" placeholder="Buscar películas o programas de TV..." aria-label="Buscar películas o programas de TV">
+            <button id="searchButton">Buscar</button>
+            <button id="ratedMoviesButton">Top Películas</button>
+            <button id="ratedTVButton">Top Series</button>
+        </div>
+        <div class="body">
+            <div id="results"></div>
+        </div>
+    </section>
+
+    <script src="/static/scripts.js"></script>
+</body>
+</html>
