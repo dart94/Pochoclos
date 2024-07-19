@@ -11,17 +11,24 @@
 <body class="fondo">
     <section class="layout">
         <div class="sidebar">
-            <h1>Bienvenido a Pochoclos</h1>
+            <a href="/">
+                <h1>Bienvenido a Pochoclos</h1>
+            </a>
             <input type="text" id="searchQuery" placeholder="Buscar películas o programas de TV..." aria-label="Buscar películas o programas de TV">
             <button id="searchButton">Buscar</button>
             <button id="ratedMoviesButton">Top Películas</button>
             <button id="ratedTVButton">Top Series</button>
         </div>
         <div class="body">
-            <div id="results"></div>
+            <h2>Tendencias</h2>
+            <div id="popular-movies" class="section-container">
+                <!-- Aquí se cargarán las películas populares -->
+            </div>
+            <div id="results" class="section-container">
+                <!-- Aquí se cargarán los resultados de búsqueda -->
+            </div>
         </div>
     </section>
-
     <script src="/static/scripts.js"></script>
 </body>
 </html>

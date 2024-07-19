@@ -7,6 +7,12 @@ $(document).ready(function() {
         });
     });
 
+    $('#searchQuery').on('keypress', function(e) {
+        if (e.which == 13) { // Enter key pressed
+            $('#searchButton').click();
+        }
+    });
+
     $('#ratedMoviesButton').click(function(e) {
         e.preventDefault();
         loadRatedMovies();
@@ -43,3 +49,17 @@ function loadReviews(type, id) {
         $('#results').html(data);
     });
 }
+
+$(document).ready(function() {
+    $.get('/popular-movies', function(movies) {
+        const container = $('#popular-movies');
+        movies.forEach(movie => {
+            container.append(`
+                <div class="movie-item">
+                    <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">
+                    <h3>${movie.title}</h3>
+                    <p>Rating: ${movie.vote_average}</p>
+                </div>`);
+        });
+    });
+});

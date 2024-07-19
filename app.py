@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, jsonify
 import requests
 
 app = Flask(__name__)
@@ -104,6 +104,15 @@ def reviews(media_type, media_id):
         return reviews_html if reviews else '<div>No se encontraron reseñas.</div>'
     else:
         return '<div>Error al cargar reseñas.</div>'
+
+
+@app.route('/popular-movies')
+def popular_movies():
+    url = f"https://api.themoviedb.org/3/movie/popular?api_key={
+        API_KEY}&language=es-ES"
+    response = requests.get(url)
+    movies = response.json().get('results', [])
+    return jsonify(movies)  # Devuelve los datos como JSON
 
 
 if __name__ == '__main__':
