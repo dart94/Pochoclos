@@ -20,7 +20,7 @@ def rated_movies():
     if response.status_code == 200:
         movies = response.json().get('results', [])
         movies_html = ''.join([
-            f"<div><img src='{image_base_url}{movie['poster_path']}' alt='Poster' style='height:100px;'> {
+            f"<div class='movie-item2'><img src='{image_base_url}{movie['poster_path']}' alt='Poster' style='height:150px;'> {
                 movie['title']} - Calificación: {movie['vote_average']} ({movie.get('release_date', 'Sin fecha')})</div>"
             for movie in movies if movie['poster_path']])
         return movies_html
@@ -37,7 +37,7 @@ def rated_tv():
     if response.status_code == 200:
         tv_shows = response.json().get('results', [])
         tv_shows_html = ''.join([
-            f"<div><img src='{image_base_url}{tv_show['poster_path']}' alt='Poster' style='height:100px;'> {
+            f"<div class='movie-item2'><img src='{image_base_url}{tv_show['poster_path']}' alt='Poster' style='height:150px;'> {
                 tv_show['name']} - Calificación: {tv_show['vote_average']} ({tv_show.get('first_air_date', 'Sin fecha')})</div>"
             for tv_show in tv_shows if tv_show['poster_path']])
         return tv_shows_html
@@ -62,16 +62,21 @@ def search():
 
     image_base_url = "https://image.tmdb.org/t/p/w500"  # Base URL for images
 
-    results_html = ''.join([
-        f"<div><img src='{image_base_url}{movie['poster_path']}' alt='Poster' style='height:100px;'> {
-            movie['title']} (Película) - <button onclick=\"loadReviews('movie', '{movie['id']}')\">Ver Reseñas</button></div>"
+    index_html = ''.join([
+        f"<div class='movie-item'><img src='{image_base_url}{
+            movie['poster_path']}' alt='Poster' style='height:100px;'>"
+        f"{movie['title']} (Película) - <button onclick=\"loadReviews('movie', '{
+            movie['id']}')\">Ver Reseñas</button></div>"
         for movie in movies if movie['poster_path']])
-    results_html += ''.join([
-        f"<div><img src='{image_base_url}{tv['poster_path']}' alt='Poster' style='height:100px;'> {
-            tv['name']} (TV) - <button onclick=\"loadReviews('tv', '{tv['id']}')\">Ver Reseñas</button></div>"
+
+    index_html += ''.join([
+        f"<div class='movie-item'><img src='{image_base_url}{
+            tv['poster_path']}' alt='Poster' style='height:100px;'>"
+        f"{tv['name']} (TV) - <button onclick=\"loadReviews('tv', '{tv['id']
+                                                                    }')\">Ver Reseñas</button></div>"
         for tv in tv_shows if tv['poster_path']])
 
-    return results_html if results_html else '<div>No se encontraron resultados.</div>'
+    return index_html if index_html else '<div>No se encontraron resultados.</div>'
 
 
 @app.route('/review/<review_id>')

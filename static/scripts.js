@@ -30,6 +30,14 @@ $(document).ready(function() {
             $('#results').html(data);
         });
     });
+
+    // Cargar películas populares
+    $.get('/popular-movies', function(movies) {
+        const container = $('#popular-movies');
+        movies.forEach(movie => {
+            container.append(createMovieHTML(movie));
+        });
+    });
 });
 
 function loadRatedMovies() {
@@ -50,16 +58,13 @@ function loadReviews(type, id) {
     });
 }
 
-$(document).ready(function() {
-    $.get('/popular-movies', function(movies) {
-        const container = $('#popular-movies');
-        movies.forEach(movie => {
-            container.append(`
-                <div class="movie-item">
-                    <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">
-                    <h3>${movie.title}</h3>
-                    <p>Rating: ${movie.vote_average}</p>
-                </div>`);
-        });
-    });
-});
+// Función para crear HTML para cada película
+function createMovieHTML(movie) {
+    return `
+        <div class="movie-item">
+            <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">
+            <h2>${movie.title}</h2>
+            <h3>Rating: ${movie.vote_average}</h3>
+        </div>`;
+}
+
