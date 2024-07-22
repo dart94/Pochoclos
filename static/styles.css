@@ -16,9 +16,9 @@ body {
     color: var(--text-color);
     font-family: 'Arial', sans-serif;
     display: flex;
+    flex-direction: column;
     height: 100vh;
     width: 100vw;
-    overflow: hidden;
 }
 
 a {
@@ -26,13 +26,16 @@ a {
     color: inherit;
 }
 
-p{
-    font-size: 50px;
+p {
+    font-size: 1.5rem;
 }
+
 .layout {
     display: grid;
-    grid-template-columns: 250px 1fr;
-    grid-template-areas: "sidebar body";
+    grid-template-columns: 1fr;
+    grid-template-areas:
+        "sidebar"
+        "body";
     gap: 8px;
     height: 100%;
     width: 100%;
@@ -63,15 +66,11 @@ h1 {
     text-shadow: 0 0 10px var(--neon-blue);
 }
 
-#search-container, .body {
-    width: 100%;
-}
-
 input[type="text"], button {
-    width: 100%;
+    /* width: 100%; */
     padding: 10px;
     margin: 5px 0;
-    font-size: 16px;
+    font-size: 1rem;
     border-radius: var(--border-radius);
     border: none;
     transition: border-color var(--transition-time), background-color var(--transition-time), box-shadow var(--transition-time);
@@ -107,15 +106,15 @@ input[type="text"]:focus {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     display: flex;
-    flex-direction: row; /* Ajustado para mantener el flujo horizontal */
-    flex-wrap: wrap; /* Asegura que los elementos se envuelvan dentro del contenedor */
-    align-items: flex-start; /* Alinea los elementos al principio del contenedor */
-    overflow: hidden; /* Previene el desbordamiento fuera del contenedor */
-    width: 100%; /* Asegura que el contenedor use todo el ancho disponible */
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    overflow: hidden;
+    width: 100%;
 }
 
-.movie-item, .movie-item2, .movie, .tv-show {
-    flex: 1 1 90px; /* Flexibilidad en la base del tamaño deseado */
+.popular-movies, .movie-item, .movie-item2, .movie, .tv-show {
+    flex: 1 1 1rem;
     margin: 5px;
     padding: 5px;
     background: rgba(255, 255, 255, 0.1);
@@ -125,15 +124,13 @@ input[type="text"]:focus {
     transition: transform var(--transition-time), box-shadow var(--transition-time);
     display: flex;
     flex-direction: column;
-    /* justify-content: space-between; */
-    min-height: 280px; /* Ajusta este valor según el tamaño deseado */
+    min-height: 280px;
     font-size: .95rem;
     font-weight: bold;
-    
 }
 
 .movie-item img, .movie-item2 img, .movie img, .tv-show img {
-    width: 100%; /* Ajusta la imagen al contenedor */
+    width: 100%;
     height: auto;
     border-radius: var(--border-radius);
 }
@@ -157,5 +154,199 @@ input[type="text"]:focus {
 
 img:hover {
     transform: scale(var(--image-hover-scale));
-    box-shadow: 0 8px 16px var(--shadow_color);
+    box-shadow: 0 8px 16px var(--shadow-color);
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-color) 0px 4px 8px;
+}
+
+.details-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.details-container img {
+    max-width: 100%;
+    margin-right: 20px;
+    border-radius: var(--border-radius);
+}
+
+.info {
+    flex: 2 1 300px;
+}
+
+.info p, .info a {
+    margin-bottom: 10px;
+}
+
+.info a {
+    padding: 10px 20px;
+    background-color: var(--button-bg-color);
+    border-radius: var(--border-radius);
+    color: var(--text-color);
+    text-decoration: none;
+    display: inline-block;
+}
+
+.info a:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 0 10px var(--neon-blue);
+}
+
+/* Media Queries para Responsividad */
+@media (max-width: 600px) {
+    .layout {
+        grid-template-columns: 1fr;  /* Makes sidebar full width */
+        grid-template-areas:
+            "sidebar"
+            "body";
+    }
+
+    .sidebar {
+        padding: 10px;  /* Smaller padding */
+    }
+
+    .body {
+        padding: 10px;  /* Smaller padding */
+    }
+
+    input[type="text"], button {
+        font-size: 0.875rem;  /* Smaller font size */
+    }
+
+    p {
+        font-size: 1rem;  /* Smaller paragraph font size */
+    }
+
+    .movie-item, .movie-item2, .movie, .tv-show {
+        min-height: 200px;  /* Smaller height for items */
+        font-size: 0.8rem;  /* Smaller font size for item texts */
+    }
+}
+
+@media (min-width: 601px) and (max-width: 1023px) {
+    .layout {
+        grid-template-columns: 200px 1fr;  /* Adjusted for tablet sizes */
+        grid-template-areas:
+            "sidebar body";
+    }
+
+    .sidebar {
+        padding: 20px;  /* Moderate padding */
+    }
+
+    .body {
+        padding: 20px;  /* Moderate padding */
+    }
+
+    input[type="text"], button {
+        font-size: 1rem;  /* Regular font size */
+    }
+
+    p {
+        font-size: 1.25rem;  /* Increased paragraph font size */
+    }
+
+    .movie-item, .movie-item2, .movie, .tv-show {
+        min-height: 250px;  /* Increased height for items */
+        font-size: 0.9rem;  /* Increased font size for item texts */
+    }
+}
+
+@media (min-width: 1024px) {
+    .layout {
+        grid-template-columns: 300px 1fr;  /* Wider sidebar for larger screens */
+        grid-template-areas:
+            "sidebar body";
+    }
+
+    .sidebar {
+        padding: 40px;  /* Larger padding */
+    }
+
+    .body {
+        padding: 40px;  /* Larger padding */
+    }
+
+    input[type="text"], button {
+        font-size: 1.375rem;  /* Larger font size */
+    }
+
+    p {
+        font-size: 1.75rem;  /* Larger paragraph font size */
+    }
+
+    .movie-item, .movie-item2, .movie, .tv-show {
+        min-height: 300px;  /* Larger height for items */
+        font-size: 1rem;  /* Larger font size for item texts */
+    }
+}
+
+.carousel-container {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none; /* Oculta la barra de desplazamiento en Firefox */
+}
+
+.carousel-container::-webkit-scrollbar {
+    display: none; /* Oculta la barra de desplazamiento en Chrome, Safari y Opera */
+}
+
+.movie-item {
+    flex: 0 0 auto; /* Evita que los elementos se estiren */
+    margin: 5px;
+    width: 200px; /* Ancho fijo para cada película */
+}
+
+.carousel {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+}
+
+.carousel .movie-item {
+    flex: 0 0 .5rem;
+    margin: .5rem;
+    width: 10rem;  /* Ancho fijo para cada ítem, puedes ajustarlo según tus necesidades */
+}
+
+/* Estilizar la barra de desplazamiento globalmente */
+/* Esto afectará a todos los elementos scrollables en tu página */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--neon-blue) var(--button-bg-color);
+}
+
+/* Para navegadores basados en WebKit (Chrome, Safari, etc.) */
+*::-webkit-scrollbar {
+    width: 8px;  /* Grosor del scrollbar */
+    height: 8px; /* Altura del scrollbar para scroll horizontal */
+}
+
+*::-webkit-scrollbar-track {
+    background: var(--button-bg-color); /* Color de fondo de la pista del scrollbar */
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: var(--neon-blue); /* Color del thumb (parte móvil) del scrollbar */
+    border-radius: 4px; /* Bordes redondeados para el thumb */
+    border: 2px solid var(--button-bg-color); /* Borde alrededor del thumb */
+}
+
+/* Estilos específicos para el carrusel */
+.carousel::-webkit-scrollbar {
+    height: 12px; /* Altura más grande para hacerlo más visible en el carrusel */
+}
+
+.carousel::-webkit-scrollbar-thumb {
+    background-color: var(--hover-bg-color); /* Un color diferente para destacar */
 }

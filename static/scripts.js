@@ -23,20 +23,9 @@ $(document).ready(function() {
         loadRatedTV();
     });
 
-    $('#loadReviewButton').click(function(e) {
-        e.preventDefault();
-        var reviewId = $('#reviewId').val();
-        $.get(`/review/${reviewId}`, function(data) {
-            $('#results').html(data);
-        });
-    });
-
     // Cargar películas populares
-    $.get('/popular-movies', function(movies) {
-        const container = $('#popular-movies');
-        movies.forEach(movie => {
-            container.append(createMovieHTML(movie));
-        });
+    $.get('/popular-movies', function(data) {
+        $('#popular-movies-container').html(data);
     });
 });
 
@@ -52,19 +41,45 @@ function loadRatedTV() {
     });
 }
 
-function loadReviews(type, id) {
-    $.get(`/reviews/${type}/${id}`, function(data) {
-        $('#results').html(data);
-    });
-}
-
-// Función para crear HTML para cada película
 function createMovieHTML(movie) {
     return `
         <div class="movie-item">
-            <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">
+            <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}" style="width:100%;">
             <h2>${movie.title}</h2>
             <h3>Rating: ${movie.vote_average}</h3>
-        </div>`;
+        </div>
+    `;
 }
 
+function loadMovieDetails(movieId) {
+    $.get(`/movie/${movieId}`, function(data) {
+        const detailsContainer = $('#movie-details');
+        const movieDetails = `
+            <div>
+                <h2>${data.title}</h2>
+                <img src="https://image.tmdb.org/t/p/w500${data.poster_path}" alt="${data.title}">
+                <p>${data.overview}</p>
+                <p><strong>Fecha de lanzamiento:</strong> ${data.release_date}</p>
+                <p><strong>Calificación:</strong> ${data.vote_average}</p>
+                <p><strong>Duración:</strong> ${data.runtime} minutos</p>
+                <p><strong>Géneros:</strong> ${data.genres.map(genre => genre.name).join(', ')}</p>
+            </div>
+        `;
+        detailsContainer.html(movieDetails);
+    });
+}
+$(document).ready(function() {
+    $('.carousel-control-right').click(function() {
+        var carousel = $('.carousel');
+        carousel.animate({
+            scrollLeft: '+=' + carousel.width()  // Ajusta según la cantidad que deseas desplazar
+        }, 300);
+    });
+
+    $('.carousel-control-left').click(function() {
+        var carousel = $('.carousel');
+        carousel.animate({
+            scrollLeft: '-=' + carousel.width()  // Ajusta según la cantidad que deseas desplazar
+        }, 300);
+    });
+});

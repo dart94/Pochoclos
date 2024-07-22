@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalles de la Serie</title>
+    <link rel="stylesheet" type="text/css" href="/static/styles.css">
+</head>
+<body>
+    <div class="container2">
+        <h1>{{ details.name }}</h1>
+        <div class="details-container">
+            <img src="https://image.tmdb.org/t/p/w500{{ details.poster_path }}" alt="Póster de {{ details.name }}">
+            <div class="info">
+                <p><strong>Calificación:</strong> {{ details.vote_average }}</p>
+                <p><strong>Número de temporadas:</strong> {{ details.number_of_seasons }}</p>
+                <p><strong>Sinopsis:</strong> {{ details.overview }}</p>
+                <p><strong>Géneros:</strong> 
+                    {% for genre in details.genres %}
+                        {{ genre.name }},
+                    {% endfor %}
+                </p>
+
+                    {% for video in videos %}
+        {% if video.site == "YouTube" %}
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ video.key }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        {% endif %}
+    {% endfor %}
+    <a href="/">Volver</a>
+                
+                
+            </div>
+        </div>
+    </div>
+</body>
+</html>
