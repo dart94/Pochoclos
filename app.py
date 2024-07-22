@@ -13,6 +13,7 @@ def index():
 
 @app.route('/rated_movies')
 def rated_movies():
+    # Asegúrate de que la URL está en una línea continua
     url = f"https://api.themoviedb.org/3/movie/top_rated?api_key={
         API_KEY}&language=es-ES"
     response = requests.get(url)
@@ -32,6 +33,7 @@ def rated_movies():
 
 @app.route('/rated_tv')
 def rated_tv():
+    # Asegúrate de que la URL está en una línea continua
     url = f"https://api.themoviedb.org/3/tv/top_rated?api_key={
         API_KEY}&language=es-ES"
     response = requests.get(url)
