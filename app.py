@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, jsonify
 import requests
 
 app = Flask(__name__)
@@ -13,7 +13,6 @@ def index():
 
 @app.route('/rated_movies')
 def rated_movies():
-    # Asegúrate de que la URL está en una línea continua
     url = f"https://api.themoviedb.org/3/movie/top_rated?api_key={
         API_KEY}&language=es-ES"
     response = requests.get(url)
@@ -33,7 +32,6 @@ def rated_movies():
 
 @app.route('/rated_tv')
 def rated_tv():
-    # Asegúrate de que la URL está en una línea continua
     url = f"https://api.themoviedb.org/3/tv/top_rated?api_key={
         API_KEY}&language=es-ES"
     response = requests.get(url)
@@ -59,7 +57,6 @@ def search():
         API_KEY}&language=es-ES&query={query}"
     tv_url = f"https://api.themoviedb.org/3/search/tv?api_key={
         API_KEY}&language=es-ES&query={query}"
-
     movie_response = requests.get(movie_url)
     movies = movie_response.json().get(
         'results', []) if movie_response.status_code == 200 else []
@@ -68,19 +65,16 @@ def search():
         'results', []) if tv_response.status_code == 200 else []
 
     image_base_url = "https://image.tmdb.org/t/p/w500"
-
     index_html = ''.join([
         f"<div class='movie-item'><img src='{image_base_url}{
             movie['poster_path']}' alt='Poster'>"
         f"{movie['title']} (Película)</div>"
         for movie in movies if movie['poster_path']])
-
     index_html += ''.join([
         f"<div class='movie-item'><img src='{image_base_url}{
             tv['poster_path']}' alt='Poster'>"
         f"{tv['name']} (TV)</div>"
         for tv in tv_shows if tv['poster_path']])
-
     return index_html if index_html else '<div>No se encontraron resultados.</div>'
 
 
