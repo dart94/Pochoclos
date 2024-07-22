@@ -13,8 +13,8 @@ def index():
 
 @app.route('/rated_movies')
 def rated_movies():
-    url = f"https://api.themoviedb.org/3/movie/top_rated?api_key={API_KEY}" \
-        "&language=es-ES"
+    url = f"https://api.themoviedb.org/3/movie/top_rated?api_key={
+        API_KEY}&language=es-ES"
     response = requests.get(url)
     image_base_url = "https://image.tmdb.org/t/p/w500"
     if response.status_code == 200:
@@ -32,8 +32,8 @@ def rated_movies():
 
 @app.route('/rated_tv')
 def rated_tv():
-    url = f"https://api.themoviedb.org/3/tv/top_rated?api_key={API_KEY}" \
-        "&language=es-ES"
+    url = f"https://api.themoviedb.org/3/tv/top_rated?api_key={
+        API_KEY}&language=es-ES"
     response = requests.get(url)
     image_base_url = "https://image.tmdb.org/t/p/w500"
     if response.status_code == 200:
@@ -53,10 +53,10 @@ def rated_tv():
 @app.route('/search')
 def search():
     query = request.args.get('query')
-    movie_url = f"https://api.themoviedb.org/3/search/movie?api_key={API_KEY}" \
-        f"&language=es-ES&query={query}"
-    tv_url = f"https://api.themoviedb.org/3/search/tv?api_key={API_KEY}" \
-        f"&language=es-ES&query={query}"
+    movie_url = f"https://api.themoviedb.org/3/search/movie?api_key={
+        API_KEY}&language=es-ES&query={query}"
+    tv_url = f"https://api.themoviedb.org/3/search/tv?api_key={
+        API_KEY}&language=es-ES&query={query}"
     movie_response = requests.get(movie_url)
     movies = movie_response.json().get(
         'results', []) if movie_response.status_code == 200 else []
