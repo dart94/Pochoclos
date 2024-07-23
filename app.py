@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, jsonify
+from flask import Flask, request, render_template
 import requests
 from dotenv import load_dotenv
 import os
@@ -22,7 +22,9 @@ def rated_movies():
         movies = response.json().get('results', [])
         movies_html = ''.join([
             f"<div class='movie-item'>"
+            f"<a href='/movie_details/{movie['id']}'>"
             f"<img src='{image_base_url}{movie['poster_path']}' alt='Poster'>"
+            f"</a>"
             f"<a href='/movie_details/{movie['id']}'>{movie['title']}</a> - "
             f"Calificación: {movie['vote_average']}</div>"
             for movie in movies if movie['poster_path']])
@@ -39,7 +41,9 @@ def rated_tv():
         tv_shows = response.json().get('results', [])
         tv_shows_html = ''.join([
             f"<div class='movie-item'>"
+            f"<a href='/tv_details/{tv_show['id']}'>"
             f"<img src='{image_base_url}{tv_show['poster_path']}' alt='Poster'>"
+            f"</a>"
             f"<a href='/tv_details/{tv_show['id']}'>{tv_show['name']}</a> - "
             f"Calificación: {tv_show['vote_average']}</div>"
             for tv_show in tv_shows if tv_show['poster_path']])
@@ -104,7 +108,9 @@ def popular_movies():
         movies = response.json().get('results', [])
         movies_html = ''.join([
             f"<div class='movie-item'>"
+            f"<a href='/movie_details/{movie['id']}'>"
             f"<img src='{image_base_url}{movie['poster_path']}' alt='Poster'>"
+            f"</a>"
             f"<a href='/movie_details/{movie['id']}'>{movie['title']}</a> - "
             f"Calificación: {movie['vote_average']}</div>"
             for movie in movies if movie['poster_path']])

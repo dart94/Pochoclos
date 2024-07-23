@@ -9,28 +9,26 @@
     <link rel="stylesheet" type="text/css" href="/static/styles.css">
 </head>
 <body class="fondo">
-    <section class="layout">
-        <div class="sidebar">
-            <a href="/">
-                <h1>Bienvenido a Pochoclos</h1>
-            </a>
-            <input type="text" id="searchQuery" placeholder="Buscar películas o programas de TV..." aria-label="Buscar películas o programas de TV">
-            <button id="searchButton">Buscar</button>
-            <button id="ratedMoviesButton">Top Películas</button>
-            <button id="ratedTVButton">Top Series</button>
-        </div>
+        <header class="sidebar">
+                <div class="header">
+                    <a href="/">
+                        <h1>Bienvenido a Pochoclos</h1>
+                    </a>
+                    <input type="text" id="searchQuery" placeholder="Buscar películas o programas de TV..." aria-label="Buscar películas o programas de TV">
+                    <button id="searchButton">Buscar</button>
+                    <button id="ratedMoviesButton">Top Películas</button>
+                    <button id="ratedTVButton">Top Series</button>
+                </div>
+        </header>
         <div class="body">
             <h2>Tendencias</h2>
-            <button class="carousel-control-left">←</button>
             <div id="popular-movies-container" class="section-container carousel"></div>
-            <button class="carousel-control-right">→</button>
-            
+                        
             <h2>Los favoritos</h2>
-            <button class="carousel-control-left">←</button>
             <div id="results" class="section-container carousel">
-                <!-- Aquí se cargarán los resultados de búsqueda -->
+            <!-- Aquí se cargarán los resultados de búsqueda -->
             </div>
-            <button class="carousel-control-right">→</button>
+            
 
             
 

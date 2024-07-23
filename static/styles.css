@@ -207,6 +207,7 @@ img:hover {
         grid-template-areas:
             "sidebar"
             "body";
+            
     }
 
     .sidebar {
@@ -228,6 +229,11 @@ img:hover {
     .movie-item, .movie-item2, .movie, .tv-show {
         min-height: 200px;  /* Smaller height for items */
         font-size: 0.8rem;  /* Smaller font size for item texts */
+    }
+
+    .header{
+        display: flex;
+        flex-direction: column;
     }
 }
 
