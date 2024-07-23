@@ -70,7 +70,7 @@ def search():
     tv_shows = tv_response.json().get(
         'results', []) if tv_response.status_code == 200 else []
 
-    image_base_url = "https://image.tmdb.org/t/p/w500"  # Base URL for images
+    image_base_url = "https://image.tmdb.org/t/p/w500"
 
     index_html = ''.join([
         f"<div class='movie-item'><img src='{image_base_url}{
@@ -102,13 +102,8 @@ def review_details(review_id):
 
 @app.route('/reviews/<media_type>/<int:media_id>')
 def reviews(media_type, media_id):
-    if media_type == "movie":
-        url = f"https://api.themoviedb.org/3/movie/{
-            media_id}/reviews?api_key={API_KEY}&language=es-ES"
-    else:
-        url = f"https://api.themoviedb.org/3/tv/{
-            media_id}/reviews?api_key={API_KEY}&language=es-ES"
-
+    url = f"https://api.themoviedb.org/3/{media_type}/{
+        media_id}/reviews?api_key={API_KEY}&language=es-ES"
     response = requests.get(url)
     if response.status_code == 200:
         reviews = response.json().get('results', [])
