@@ -1,6 +1,6 @@
 :root {
-    --main-bg-color: rgba(44,98,126,0.8);
-    --hover-bg-color: rgba(44,98,126,1);
+    --main-bg-color: rgba(44, 98, 126, 0.8);
+    --hover-bg-color: rgba(44, 98, 126, 1);
     --text-color: white;
     --button-bg-color: rgba(0, 0, 0, 0.8);
     --neon-blue: rgba(0, 255, 255, 0.75);
@@ -17,8 +17,9 @@ body {
     font-family: 'Arial', sans-serif;
     display: flex;
     flex-direction: column;
-    height: 100vh;
-    width: 100vw;
+    min-height: 100vh;
+    width: 100%;
+    font-size: 16px;
 }
 
 a {
@@ -27,7 +28,7 @@ a {
 }
 
 p {
-    font-size: 1.5rem;
+    font-size: 1rem;
 }
 
 .layout {
@@ -45,29 +46,34 @@ p {
     grid-area: sidebar;
     background: var(--button-bg-color);
     display: flex;
-    flex-direction: column;
     align-items: center;
-    padding: 20px;
+    padding: 5%;
     overflow-y: auto;
     border-radius: var(--border-radius);
+    justify-content: space-evenly;
 }
 
 .body {
     grid-area: body;
-    padding: 20px;
+    padding: 5%;
     overflow-y: auto;
     background: rgba(255, 255, 255, 0.1);
     border-radius: var(--border-radius);
     box-shadow: 0 4px 8px var(--shadow-color);
 }
 
+.header {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 h1 {
     text-align: center;
     text-shadow: 0 0 10px var(--neon-blue);
+    font-size: 2rem;
 }
 
 input[type="text"], button {
-    /* width: 100%; */
     padding: 10px;
     margin: 5px 0;
     font-size: 1rem;
@@ -100,8 +106,8 @@ input[type="text"]:focus {
 }
 
 .section-container {
-    padding: 20px;
-    margin-top: 20px;
+    padding: 5%;
+    margin-top: 5%;
     background: rgba(0, 0, 0, 0.5);
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -114,7 +120,7 @@ input[type="text"]:focus {
 }
 
 .popular-movies, .movie-item, .movie-item2, .movie, .tv-show {
-    flex: 1 1 1rem;
+    flex: 1 1 150px;
     margin: 5px;
     padding: 5px;
     background: rgba(255, 255, 255, 0.1);
@@ -125,7 +131,7 @@ input[type="text"]:focus {
     display: flex;
     flex-direction: column;
     min-height: 280px;
-    font-size: .95rem;
+    font-size: 0.95rem;
     font-weight: bold;
 }
 
@@ -160,7 +166,7 @@ img:hover {
 .container {
     max-width: 800px;
     margin: 20px auto;
-    padding: 20px;
+    padding: 5%;
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: var(--border-radius);
     box-shadow: var(--shadow-color) 0px 4px 8px;
@@ -200,116 +206,21 @@ img:hover {
     box-shadow: 0 0 10px var(--neon-blue);
 }
 
-/* Media Queries para Responsividad */
-@media (max-width: 600px) {
-    .layout {
-        grid-template-columns: 1fr;  /* Makes sidebar full width */
-        grid-template-areas:
-            "sidebar"
-            "body";
-            
-    }
-
-    .sidebar {
-        padding: 10px;  /* Smaller padding */
-    }
-
-    .body {
-        padding: 10px;  /* Smaller padding */
-    }
-
-    input[type="text"], button {
-        font-size: 0.875rem;  /* Smaller font size */
-    }
-
-    p {
-        font-size: 1rem;  /* Smaller paragraph font size */
-    }
-
-    .movie-item, .movie-item2, .movie, .tv-show {
-        min-height: 200px;  /* Smaller height for items */
-        font-size: 0.8rem;  /* Smaller font size for item texts */
-    }
-
-    .header{
-        display: flex;
-        flex-direction: column;
-    }
-}
-
-@media (min-width: 601px) and (max-width: 1023px) {
-    .layout {
-        grid-template-columns: 200px 1fr;  /* Adjusted for tablet sizes */
-        grid-template-areas:
-            "sidebar body";
-    }
-
-    .sidebar {
-        padding: 20px;  /* Moderate padding */
-    }
-
-    .body {
-        padding: 20px;  /* Moderate padding */
-    }
-
-    input[type="text"], button {
-        font-size: 1rem;  /* Regular font size */
-    }
-
-    p {
-        font-size: 1.25rem;  /* Increased paragraph font size */
-    }
-
-    .movie-item, .movie-item2, .movie, .tv-show {
-        min-height: 250px;  /* Increased height for items */
-        font-size: 0.9rem;  /* Increased font size for item texts */
-    }
-}
-
-@media (min-width: 1024px) {
-    .layout {
-        grid-template-columns: 300px 1fr;  /* Wider sidebar for larger screens */
-        grid-template-areas:
-            "sidebar body";
-    }
-
-    .sidebar {
-        padding: 40px;  /* Larger padding */
-    }
-
-    .body {
-        padding: 40px;  /* Larger padding */
-    }
-
-    input[type="text"], button {
-        font-size: 1.375rem;  /* Larger font size */
-    }
-
-    p {
-        font-size: 1.75rem;  /* Larger paragraph font size */
-    }
-
-    .movie-item, .movie-item2, .movie, .tv-show {
-        min-height: 300px;  /* Larger height for items */
-        font-size: 1rem;  /* Larger font size for item texts */
-    }
-}
-
 .carousel-container {
     display: flex;
     flex-wrap: nowrap;
     overflow-x: auto;
-    scrollbar-width: none; /* Oculta la barra de desplazamiento en Firefox */
+    scrollbar-width: none;
 }
 
 .carousel-container::-webkit-scrollbar {
-    display: none; /* Oculta la barra de desplazamiento en Chrome, Safari y Opera */
+    display: none;
 }
 
 .movie-item {
-    flex: 0 0 auto; /* Evita que los elementos se estiren */
+    flex: 0 0 auto;
     margin: 5px;
-    width: 200px; /* Ancho fijo para cada película */
+    width: 150px;
 }
 
 .carousel {
@@ -320,39 +231,145 @@ img:hover {
 }
 
 .carousel .movie-item {
-    flex: 0 0 .5rem;
-    margin: .5rem;
-    width: 10rem;  /* Ancho fijo para cada ítem, puedes ajustarlo según tus necesidades */
+    flex: 0 0 150px;
+    margin: 0.5rem;
+    width: 150px;
 }
 
-/* Estilizar la barra de desplazamiento globalmente */
-/* Esto afectará a todos los elementos scrollables en tu página */
 * {
     scrollbar-width: thin;
     scrollbar-color: var(--neon-blue) var(--button-bg-color);
 }
 
-/* Para navegadores basados en WebKit (Chrome, Safari, etc.) */
 *::-webkit-scrollbar {
-    width: 8px;  /* Grosor del scrollbar */
-    height: 8px; /* Altura del scrollbar para scroll horizontal */
+    width: 8px;
+    height: 8px;
 }
 
 *::-webkit-scrollbar-track {
-    background: var(--button-bg-color); /* Color de fondo de la pista del scrollbar */
+    background: var(--button-bg-color);
 }
 
 *::-webkit-scrollbar-thumb {
-    background-color: var(--neon-blue); /* Color del thumb (parte móvil) del scrollbar */
-    border-radius: 4px; /* Bordes redondeados para el thumb */
-    border: 2px solid var(--button-bg-color); /* Borde alrededor del thumb */
+    background-color: var(--neon-blue);
+    border-radius: 4px;
+    border: 2px solid var(--button-bg-color);
 }
 
-/* Estilos específicos para el carrusel */
 .carousel::-webkit-scrollbar {
-    height: 12px; /* Altura más grande para hacerlo más visible en el carrusel */
+    height: 12px;
 }
 
 .carousel::-webkit-scrollbar-thumb {
-    background-color: var(--hover-bg-color); /* Un color diferente para destacar */
+    background-color: var(--hover-bg-color);
+}
+
+@media (max-width: 600px) {
+    body {
+        font-size: 14px;
+    }
+
+    .layout {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "sidebar"
+            "body";
+    }
+
+    .sidebar {
+        padding: 10px;
+    }
+
+    .body {
+        padding: 10px;
+    }
+    .carousel .movie-item {
+        flex: 0 0 ;
+        margin: 0.5rem;
+        width: 150px;
+    }
+
+    input[type="text"], button {
+        font-size: 16px;
+        padding: 12px;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+
+    .movie-item, .movie-item2, .movie, .tv-show {
+        min-height: 150px;
+        font-size: 0.8rem;
+    }
+
+    .header {
+        flex-direction: column;
+    }
+
+    .carousel .movie-item {
+        width: 150px;
+    }
+
+    .details-container {
+        flex-direction: column;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (min-width: 601px) and (max-width: 1023px) {
+    .layout {
+        grid-template-columns: 150px 1fr;
+        grid-template-areas:
+            "sidebar body";
+    }
+
+    .sidebar {
+        padding: 20px;
+    }
+
+    .body {
+        padding: 20px;
+    }
+
+    input[type="text"], button {
+        font-size: 1rem;
+    }
+
+    p {
+        font-size: 1.25rem;
+    }
+
+    .movie-item, .movie-item2, .movie, .tv-show {
+        min-height: 250px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .layout {
+        grid-template-columns: 300px 1fr;
+        grid-template-areas:
+            "sidebar body";
+    }
+
+    .body {
+        padding: 40px;
+    }
+
+    input[type="text"], button {
+        font-size: 1.375rem;
+    }
+
+    p {
+        font-size: 1.75rem;
+    }
+
+    .movie-item, .movie-item2, .movie, .tv-show {
+        min-height: 300px;
+        font-size: 1rem;
+    }
 }
