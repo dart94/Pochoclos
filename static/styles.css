@@ -532,6 +532,7 @@ footer {
 .nav-item {
     padding: 8px 16px; /* Espacio interno para todos los nav-item */
     margin: 5px; /* Espacio externo común */
+    font-size: 1.3rem;
 }
 
 input.nav-item {
