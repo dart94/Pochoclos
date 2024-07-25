@@ -435,7 +435,13 @@ footer {
         max-height: 40px;
         margin-bottom: 10px;
     }
+
+    .nav-item {
+        padding: 8px 10px; /* Menor padding en dispositivos móviles */
+        margin: 3px; /* Menor margen en dispositivos móviles */
+    }
 }
+
 
 @media (min-width: 601px) and (max-width: 1023px) {
     .layout {
@@ -467,4 +473,67 @@ footer {
     }
 
 
+}
+
+
+
+
+.logo img {
+    height: 40px;
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.hamburger span {
+    height: 3px;
+    width: 25px;
+    background-color: white;
+    margin-bottom: 4px;
+    border-radius: 5px;
+    margin-top: 2px;
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-menu {
+        position: fixed;
+        right: -100%;
+        top: 70px;
+        flex-direction: column;
+        background-color: rgba(0, 0, 0, 0.9);
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+    }
+
+    .nav-menu.active {
+        right: 0;
+    }
+
+    .nav-menu button,
+    .nav-menu input {
+        margin: 1rem 0;
+    }
+}
+
+.nav-item {
+    padding: 8px 16px; /* Espacio interno para todos los nav-item */
+    margin: 5px; /* Espacio externo común */
+}
+
+input.nav-item {
+    padding: 10px 20px; /* Espacio interno específico para el input */
 }

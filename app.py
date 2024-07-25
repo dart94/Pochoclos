@@ -64,13 +64,18 @@ def search():
     image_base_url = "https://image.tmdb.org/t/p/w500"
 
     index_html = ''.join([
-        f"<div class='movie-item'><img src='{image_base_url}{movie['poster_path']}' alt='Poster' style='height:100px;'>"
-        f"{movie['title']} (Película)</div>"
+        f"<div class='movie-item'>"
+        f"<a href='/movie_details/{movie['id']}'>"
+        f"<img src='{image_base_url}{movie['poster_path']}' alt='Poster'>"
+        f"</a></div>"
         for movie in movies if movie['poster_path']])
 
     index_html += ''.join([
-        f"<div class='movie-item'><img src='{image_base_url}{tv['poster_path']}' alt='Poster' style='height:100px;'>"
-        f"{tv['name']} (TV)</div>"
+        f"<div class='movie-item'>"
+        f"<a href='/tv_details/{tv['id']}'>"
+        f"<img src='{image_base_url}{tv['poster_path']}' alt='Poster'>"
+        f"</a></div>"
+        
         for tv in tv_shows if tv['poster_path']])
 
     return index_html if index_html else '<div>No se encontraron resultados.</div>'
