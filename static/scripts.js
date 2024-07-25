@@ -1,15 +1,15 @@
 $(document).ready(function() {
-    $('#searchButton').click(function(e) {
-        e.preventDefault();
+    function performSearch() {
         var query = $('#searchQuery').val();
         $.get('/search', { query: query }, function(data) {
             $('#results').html(data);
         });
-    });
+    }
 
     $('#searchQuery').on('keypress', function(e) {
         if (e.which == 13) { // Enter key pressed
-            $('#searchButton').click();
+            e.preventDefault(); // Prevenir el comportamiento por defecto del formulario
+            performSearch();
         }
     });
 
@@ -68,6 +68,7 @@ function loadMovieDetails(movieId) {
         detailsContainer.html(movieDetails);
     });
 }
+
 $(document).ready(function() {
     $('.carousel-control-right').click(function() {
         var carousel = $('.carousel');

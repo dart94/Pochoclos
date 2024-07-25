@@ -24,9 +24,8 @@ def rated_movies():
             f"<div class='movie-item'>"
             f"<a href='/movie_details/{movie['id']}'>"
             f"<img src='{image_base_url}{movie['poster_path']}' alt='Poster'>"
-            f"</a>"
-            f"<a href='/movie_details/{movie['id']}'>{movie['title']}</a> - "
-            f"Calificación: {movie['vote_average']}</div>"
+            f"</a></div>"
+            
             for movie in movies if movie['poster_path']])
         return movies_html
     else:
@@ -43,9 +42,9 @@ def rated_tv():
             f"<div class='movie-item'>"
             f"<a href='/tv_details/{tv_show['id']}'>"
             f"<img src='{image_base_url}{tv_show['poster_path']}' alt='Poster'>"
-            f"</a>"
-            f"<a href='/tv_details/{tv_show['id']}'>{tv_show['name']}</a> - "
-            f"Calificación: {tv_show['vote_average']}</div>"
+            f"</a></div>"
+            
+            
             for tv_show in tv_shows if tv_show['poster_path']])
         return tv_shows_html
     else:
@@ -110,9 +109,9 @@ def popular_movies():
             f"<div class='movie-item'>"
             f"<a href='/movie_details/{movie['id']}'>"
             f"<img src='{image_base_url}{movie['poster_path']}' alt='Poster'>"
-            f"</a>"
-            f"<a href='/movie_details/{movie['id']}'>{movie['title']}</a> - "
-            f"Calificación: {movie['vote_average']}</div>"
+            f"</a></div>"
+            
+            
             for movie in movies if movie['poster_path']])
         return movies_html
     else:
