@@ -152,5 +152,39 @@ def tv_details(tv_id):
     else:
         return '<div>Error al obtener los detalles de la serie de TV.</div>'
 
+@app.route('/upcoming_movies')
+def upcoming_movies():
+    url = f"https://api.themoviedb.org/3/movie/upcoming?api_key={API_KEY}&language=es-ES"
+    response = requests.get(url)
+    image_base_url = "https://image.tmdb.org/t/p/w500"
+    if response.status_code == 200:
+        movies = response.json().get('results', [])
+        movies_html = ''.join([
+            f"<div class='movie-item'>"
+            f"<a href='/movie_details/{movie['id']}'>"
+            f"<img src='{image_base_url}{movie['poster_path']}' alt='Poster de {movie['title']}'>"
+            f"</a></div>"
+            for movie in movies if movie['poster_path']])
+        return movies_html
+    else:
+        return '<div>No se encontraron próximos estrenos.</div>'
+
+@app.route('/upcoming_tv')
+def upcoming_tv():
+    url = f"https://api.themoviedb.org/3/tv/on_the_air?api_key={API_KEY}&language=es-ES"
+    response = requests.get(url)
+    image_base_url = "https://image.tmdb.org/t/p/w500"
+    if response.status_code == 200:
+        tv_shows = response.json().get('results', [])
+        tv_shows_html = ''.join([
+            f"<div class='movie-item'>"
+            f"<a href='/tv_details/{tv_show['id']}'>"
+            f"<img src='{image_base_url}{tv_show['poster_path']}' alt='Poster de {tv_show['name']}'>"
+            f"</a></div>"
+            for tv_show in tv_shows if tv_show['poster_path']])
+        return tv_shows_html
+    else:
+        return '<div>No se encontraron series próximas a estrenar.</div>'
+
 if __name__ == '__main__':
     app.run(debug=True)
