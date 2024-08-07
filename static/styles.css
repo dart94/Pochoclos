@@ -438,10 +438,8 @@ footer {
 
     
     .details-container {
-        max-width: 50%;
-        display: grid;
-        grid-template-rows: repeat(1, 1fr);
-        grid-template-columns: repeat(1, 1fr);
+        display: flex;
+        align-items: center;
         gap: 8px;
     }
 
