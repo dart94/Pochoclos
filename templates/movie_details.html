@@ -11,10 +11,9 @@
               <img src="/static/img/logo.png">
               </a>
   </header>
-    <div class="details-container">
+    <div class="details-container info">
             <h1>{{ details.name }}</h1>
             <img src="https://image.tmdb.org/t/p/w500{{ details.poster_path }}" alt="Póster de {{ details.name }}">
-            <div class="info">
                 <p><strong>Calificación:</strong> {{ details.vote_average }}</p>
                 <p><strong>Sinopsis:</strong> {{ details.overview }}</p>
                 <p><strong>Géneros:</strong> 
@@ -28,7 +27,6 @@
                 {% endif %}
             {% endfor %}
                 <a href="/">Volver</a>
-            </div>
         
     </div>
 
