@@ -125,30 +125,25 @@ def popular_movies():
 @app.route('/movie_details/<int:movie_id>')
 def movie_details(movie_id):
     movie_url = f"https://api.themoviedb.org/3/movie/{movie_id}?api_key={API_KEY}&language=es-ES"
-    videos_url = f"https://api.themoviedb.org/3/movie/{movie_id}/videos?api_key={API_KEY}&language=es-ES"
 
     movie_response = requests.get(movie_url)
-    videos_response = requests.get(videos_url)
+    
 
     if movie_response.status_code == 200:
         movie_details = movie_response.json()
-        videos = videos_response.json()['results'] if videos_response.status_code == 200 else []
-        return render_template('movie_details.html', details=movie_details, videos=videos)
+        return render_template('movie_details.html', details=movie_details)
     else:
         return '<div>Error al obtener los detalles de la película.</div>'
 
 @app.route('/tv_details/<int:tv_id>')
 def tv_details(tv_id):
     tv_url = f"https://api.themoviedb.org/3/tv/{tv_id}?api_key={API_KEY}&language=es-ES"
-    videos_url = f"https://api.themoviedb.org/3/tv/{tv_id}/videos?api_key={API_KEY}&language=es-ES"
 
     tv_response = requests.get(tv_url)
-    videos_response = requests.get(videos_url)
 
     if tv_response.status_code == 200:
         tv_details = tv_response.json()
-        videos = videos_response.json()['results'] if videos_response.status_code == 200 else []
-        return render_template('tv_details.html', details=tv_details, videos=videos)
+        return render_template('tv_details.html', details=tv_details)
     else:
         return '<div>Error al obtener los detalles de la serie de TV.</div>'
 

@@ -52,12 +52,14 @@ $(document).ready(function() {
     hamburger.click(() => {
         hamburger.toggleClass("active");
         navMenu.toggleClass("active");
+        $("body").toggleClass("menu-active");
     });
 
     // Cerrar el menú cuando se selecciona un ítem
     $(".nav-item").click(() => {
         hamburger.removeClass("active");
         navMenu.removeClass("active");
+        $("body").removeClass("menu-active");
     });
 });
 
