@@ -70,7 +70,7 @@ header {
 
 header img {
     height: auto;
-    max-height: 60px;
+    max-height: 3rem;
     width: auto;
 }
 
@@ -181,17 +181,18 @@ img:hover {
 
 .details-container {
     width: 100%;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    margin-top: 5rem;
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
     margin-left: 5rem;
+    flex-direction: column;
+    align-items: center;
   }
   
 
 
 .details-container img {
-    max-width: 100%;
+    width: 20%;
     border-radius: 8px;
 }
 
@@ -453,6 +454,11 @@ footer {
     header img {
         max-height: 40px;
         margin-bottom: 10px;
+    }
+
+    .details-container img {
+        width: 50%;
+        
     }
 
     .nav-item {
