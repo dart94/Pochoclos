@@ -94,4 +94,8 @@ function fetchUpcomingTV() {
     });
 }
 
+document.getElementById('regresarBtn').addEventListener('click', function() {
+    window.location.href = 'index.html'; // Cambia 'index.html' por la ruta correcta si es necesario
+});
+
 

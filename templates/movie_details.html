@@ -25,9 +25,14 @@
                     <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ video.key }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 {% endif %}
             {% endfor %}
-                <a href="/">Volver</a>
-        
+
     </div>
+    <a href="/" id="regresarBtn">
+      <button>
+          <span>Regresar</span>
+      </button>
+  </a>
+
 
     <footer class="footer">
         <ul class="example-2">
@@ -102,5 +107,6 @@
           </ul>
           
     </footer>
+    <script src="/static/scripts.js"></script>
 </body>
 </html>
