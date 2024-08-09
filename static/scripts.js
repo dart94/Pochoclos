@@ -62,9 +62,17 @@ $(document).ready(function() {
         $("body").removeClass("menu-active");
     });
 
-    // Evento para el botón BB-8 para cambiar a la temática Star Wars
+    // Evento para el botón BB-8 para cambiar a la temática Star Wars y cambiar el logo
     document.querySelector('.bb8-toggle__checkbox').addEventListener('change', function() {
         document.body.classList.toggle('star-wars-theme');
+        
+        // Cambiar el logo
+        var logoImage = document.getElementById('logoImage');
+        if (document.body.classList.contains('star-wars-theme')) {
+            logoImage.src = '/static/img/logo2.png';  // Cambia a la imagen de Star Wars
+        } else {
+            logoImage.src = '/static/img/logo.png';  // Vuelve a la imagen original
+        }
     });
 });
 
