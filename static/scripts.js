@@ -61,6 +61,11 @@ $(document).ready(function() {
         navMenu.removeClass("active");
         $("body").removeClass("menu-active");
     });
+
+    // Evento para el botón BB-8 para cambiar a la temática Star Wars
+    document.querySelector('.bb8-toggle__checkbox').addEventListener('change', function() {
+        document.body.classList.toggle('star-wars-theme');
+    });
 });
 
 function performSearch() {
@@ -97,5 +102,3 @@ function fetchUpcomingTV() {
 document.getElementById('regresarBtn').addEventListener('click', function() {
     window.location.href = 'index.html'; // Cambia 'index.html' por la ruta correcta si es necesario
 });
-
-
