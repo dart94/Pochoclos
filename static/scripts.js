@@ -63,17 +63,24 @@ $(document).ready(function() {
     });
 
     // Evento para el botón BB-8 para cambiar a la temática Star Wars y cambiar el logo
-    document.querySelector('.bb8-toggle__checkbox').addEventListener('change', function() {
-        document.body.classList.toggle('star-wars-theme');
-        
-        // Cambiar el logo
-        var logoImage = document.getElementById('logoImage');
-        if (document.body.classList.contains('star-wars-theme')) {
-            logoImage.src = '/static/img/logo2.png';  // Cambia a la imagen de Star Wars
-        } else {
-            logoImage.src = '/static/img/logo.png';  // Vuelve a la imagen original
-        }
-    });
+    const bb8ToggleCheckbox = document.querySelector('.bb8-toggle__checkbox');
+    
+    if (bb8ToggleCheckbox) {
+        bb8ToggleCheckbox.addEventListener('change', function() {
+            console.log("BB-8 toggle clicked!");
+            document.body.classList.toggle('star-wars-theme');
+
+            // Cambiar el logo
+            var logoImage = document.getElementById('logoImage');
+            if (document.body.classList.contains('star-wars-theme')) {
+                logoImage.src = '/static/img/logo2.png';  // Cambia a la imagen de Star Wars
+            } else {
+                logoImage.src = '/static/img/logo.png';  // Vuelve a la imagen original
+            }
+        });
+    } else {
+        console.error('BB-8 toggle checkbox not found!');
+    }
 });
 
 function performSearch() {

@@ -33,7 +33,7 @@ body {
 
 /* Estilos para el tema Star Wars */
 body.star-wars-theme {
-    background: radial-gradient(circle, var(--sw-main-bg-color) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,1) 86%);
+    background: radial-gradient(circle, rgb(126, 121, 44) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,1) 86%);
     color: var(--sw-text-color);
 }
 
