@@ -10,9 +10,14 @@ $(document).ready(function() {
 
     // Evento para búsqueda con "Enter"
     $('#searchQuery').on('keypress', function(e) {
-        if (e.which == 13) {
-            e.preventDefault();
-            performSearch();
+        if (e.which == 13) { // Código 13 es la tecla Enter
+            e.preventDefault(); // Evita el comportamiento por defecto del Enter
+            performSearch(); // Ejecuta la función de búsqueda
+
+            // Cierra el menú después de la búsqueda
+            hamburger.removeClass("active");
+            navMenu.removeClass("active");
+            $("body").removeClass("menu-active");
         }
     });
 
